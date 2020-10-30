@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import Form from './components/Form';
+import Appointment from './components/Appointment';
 
 function App() {
   const [appointments, setAppointments] = useState([]);
@@ -11,6 +12,10 @@ function App() {
     ]);
   }
 
+  const handleRemoveAppointment = appointment => {
+    setAppointments(appointments.filter(a => a.id !== appointment.id));
+  }
+
   return (
     <>
       <h1>Administrador de Pacientes</h1>
@@ -20,7 +25,8 @@ function App() {
             <Form handleAddAppointment={handleAddAppointment} />
           </div>
           <div className="one-half column">
-            2
+            <h2>{appointments.length === 0 ? 'No hay citas' : 'Administra tus citas'}</h2>
+            {appointments.map(appointment => <Appointment appointment={appointment} key={appointment.id} handleRemoveAppointment={handleRemoveAppointment}/>)}
           </div>
         </div>
       </div>
