@@ -1,9 +1,15 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Form from './components/Form';
 import Appointment from './components/Appointment';
 
 function App() {
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState(() => {
+    if (localStorage.getItem('appointments') !== null) {
+      return JSON.parse(localStorage.getItem('appointments'));
+    } else {
+      return [];
+    }
+  });
 
   const handleAddAppointment = appointment => {
     setAppointments([
@@ -15,6 +21,10 @@ function App() {
   const handleRemoveAppointment = appointment => {
     setAppointments(appointments.filter(a => a.id !== appointment.id));
   }
+
+  useEffect(() => {
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+  }, [appointments]);
 
   return (
     <>
