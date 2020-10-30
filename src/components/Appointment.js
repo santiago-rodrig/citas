@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Appointment = ({ appointment, handleRemoveAppointment }) => (
   <div className="cita">
@@ -7,8 +8,13 @@ const Appointment = ({ appointment, handleRemoveAppointment }) => (
     <p>Fecha: <span>{appointment.date_appointment}</span></p>
     <p>Hora: <span>{appointment.time_appointment}</span></p>
     <p>Síntomas: <span>{appointment.symptoms}</span></p>
-    <button type="butto" className="button eliminar u-full-width" onClick={() => handleRemoveAppointment(appointment)}>Eliminar</button>
+    <button type="button" className="button eliminar u-full-width" onClick={() => handleRemoveAppointment(appointment)}>Eliminar</button>
   </div>
 );
+
+Appointment.propTypes = {
+  appointment: PropTypes.object.isRequired,
+  handleRemoveAppointment: PropTypes.func.isRequired
+};
 
 export default Appointment;
