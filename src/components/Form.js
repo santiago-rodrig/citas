@@ -9,6 +9,10 @@ const Form = () => {
     symptoms: ''
   });
 
+  const [error, setError] = useState(false);
+
+  const { pet, owner, date_appointment, time_appointment, symptoms } = appointment;
+
   const handleChange = e => {
     setAppointment({
       ...appointment,
@@ -16,12 +20,30 @@ const Form = () => {
     });
   }
 
-  const { pet, owner, date_appointment, time_appointment, symptoms } = appointment;
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (
+      pet.trim() === '' ||
+      owner.trim() === '' ||
+      date_appointment.trim() === '' ||
+      time_appointment.trim() === '' ||
+      symptoms.trim() === ''
+    ) {
+      setError(true);
+
+      return;
+    }
+
+    setError(false);
+  }
+
 
   return (
     <>
       <h2>Crear Cita</h2>
-      <form>
+      { error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null}
+      <form onSubmit={handleSubmit}>
         <label>Nombre de tu mascota</label>
         <input type="text" name="pet" className="u-full-width" onChange={handleChange} value={pet} />
         <label>Nombre del dueño</label>
