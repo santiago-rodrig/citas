@@ -13,7 +13,7 @@ const Form = () => (
       <label>Hora en la que se da de alta</label>
       <input type="time" name="time_free" className="u-full-width" />
       <label>Síntomas</label>
-      <textarea className="u-full-width" name="sympthoms"></textarea>
+      <textarea className="u-full-width" name="symptoms"></textarea>
       <button type="submit" className="u-full-width button-primary">Agregar Cita</button>
     </form>
   </>
