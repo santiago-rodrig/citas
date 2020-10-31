@@ -4,7 +4,7 @@ This project is intended to be an application that stores appointments
 with the vet for your pets, it is intented to showcase the ReactJS features
 and what can you do with them.
 
-# Setup
+## Setup
 
 You'll need [NodeJS](https://nodejs.org/en/) and
 [Yarn](https://yarnpkg.com/getting-started/install) installed on your system.
